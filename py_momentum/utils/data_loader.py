@@ -1,6 +1,7 @@
 import os
-import pandas as pd
 from typing import Dict
+
+import pandas as pd
 
 
 def load_stock_data(directory: str) -> Dict[str, pd.DataFrame]:
