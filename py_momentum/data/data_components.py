@@ -28,7 +28,6 @@ class DataSaver(Protocol):
     def save(self, ticker: str, data: pd.DataFrame, directory: str) -> None: ...
 
 
-# Fetchers
 class YahooFinanceFetcher(DataFetcher):
     def __init__(
         self,
@@ -41,7 +40,7 @@ class YahooFinanceFetcher(DataFetcher):
         self.limiter = limiter
 
     async def fetch(
-        self, tickers: List[str], start_date: datetime, end_date: datetime
+        self, tickers: List[str], start_date: pd.Timestamp, end_date: pd.Timestamp
     ) -> Dict[str, pd.DataFrame]:
         async def fetch_single(ticker):
             url = f"https://query1.finance.yahoo.com/v7/finance/download/{ticker}"
@@ -78,9 +77,7 @@ class YahooFinanceFetcher(DataFetcher):
                     logger.error(f"Error fetching {ticker}: {str(e)}")
                     return ticker, None
 
-        results = await tqdm.gather(
-            *[fetch_single(ticker) for ticker in tickers], desc="Fetching data"
-        )
+        results = await asyncio.gather(*[fetch_single(ticker) for ticker in tickers])
         return {ticker: df for ticker, df in results if df is not None}
 
 
@@ -145,8 +142,8 @@ class DataPipeline:
     async def run(
         self,
         tickers: List[str],
-        start_date: datetime,
-        end_date: datetime,
+        start_date: pd.Timestamp,
+        end_date: pd.Timestamp,
         save_dir: str,
     ) -> Dict[str, pd.DataFrame]:
         data = await self.fetcher.fetch(tickers, start_date, end_date)
@@ -165,21 +162,20 @@ class DataPipeline:
         return data
 
 
-# DataLoader
 class DataLoader:
-    def __init__(self, pipeline: DataPipeline):
-        self.pipeline = pipeline
+    def __init__(self, fetcher: DataFetcher):
+        self.fetcher = fetcher
 
-    async def load_and_process_data(
-        self, tickers: List[str], start_date: str, end_date: str, save_dir: str
+    async def load_data(
+        self, tickers: List[str], start_date: str, end_date: str
     ) -> Dict[str, pd.DataFrame]:
-        start = datetime.strptime(start_date, "%Y-%m-%d")
-        end = datetime.strptime(end_date, "%Y-%m-%d")
-        return await self.pipeline.run(tickers, start, end, save_dir)
+        start = pd.to_datetime(start_date)
+        end = pd.to_datetime(end_date)
+        return await self.fetcher.fetch(tickers, start, end)
 
     def get_available_tickers(self) -> List[str]:
-        if isinstance(self.pipeline.fetcher, CSVFetcher):
-            return self.pipeline.fetcher.get_available_tickers()
+        if isinstance(self.fetcher, CSVFetcher):
+            return self.fetcher.get_available_tickers()
         else:
             raise NotImplementedError(
                 "Getting available tickers is only supported for CSVFetcher"

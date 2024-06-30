@@ -1,4 +1,6 @@
+# backtester_cli.py
 import asyncio
+import sys
 
 import click
 import pandas as pd
@@ -6,181 +8,146 @@ from loguru import logger
 
 from py_momentum.analysis.results_summary import create_results_summary
 from py_momentum.backtester.backtester import Backtester
-from py_momentum.data.data_components import (
-    ATRProcessor,
-    CSVFetcher,
-    CSVSaver,
-    DataLoader,
-    DataPipeline,
-    MovingAverageProcessor,
-)
+from py_momentum.data.data_components import CSVFetcher, DataLoader
+from py_momentum.logger.trade_logger import TradeLogger
 from py_momentum.strategy.filters import IndexFilter
 from py_momentum.strategy.portfolio import Portfolio
 from py_momentum.strategy.position_sizing import PositionSizer
 from py_momentum.strategy.ranking import MomentumRankingStrategy
-from py_momentum.strategy.rebalance_threshold import ThresholdRebalanceStrategy
-from py_momentum.strategy.rebalancer import PositionRebalancer
-from py_momentum.utils.date_utils import align_data, get_trading_dates
-from py_momentum.visualisation.plotter import (
-    plot_portfolio_composition,
-    plot_portfolio_performance,
-    plot_rolling_metrics,
+from py_momentum.strategy.rebalancer import (
+    PositionRebalancer,
+    ThresholdRebalanceStrategy,
 )
+from py_momentum.strategy.transaction_costs import TransactionCosts
+from py_momentum.utils.config_util import load_config
+from py_momentum.utils.date_utils import align_data, get_trading_dates
 
 
 @click.command()
-@click.option(
-    "--start-date",
-    "-s",
-    default="2015-01-01",
-    required=True,
-    help="Start date (YYYY-MM-DD)",
-)
-@click.option(
-    "--end-date",
-    "-e",
-    default="2024-01-01",
-    required=True,
-    help="End date (YYYY-MM-DD)",
-)
-@click.option(
-    "--initial-capital", "-c", type=float, default=100000, help="Initial capital"
-)
-@click.option(
-    "--raw-data-dir",
-    "-r",
-    default="data",
-    help="Directory containing raw CSV files",
-)
-@click.option(
-    "--processed-data-dir",
-    "-p",
-    default="processed_data",
-    help="Directory to save processed CSV files",
-)
-@click.option(
-    "--index-symbol", "-i", default="^GSPC", help="Index symbol for benchmark"
-)
-@click.option(
-    "--output-dir",
-    "-o",
-    default="backtest_results",
-    help="Directory to save backtest results",
-)
-def run_backtest(
-    start_date,
-    end_date,
-    initial_capital,
-    raw_data_dir,
-    processed_data_dir,
-    index_symbol,
-    output_dir,
-):
-    asyncio.run(
-        backtest(
-            start_date,
-            end_date,
-            initial_capital,
-            raw_data_dir,
-            processed_data_dir,
-            index_symbol,
-            output_dir,
-        )
-    )
+@click.option("--config", default="config.yaml", help="Path to configuration file")
+def run_backtest(config):
+    """Run the backtesting process using the specified configuration."""
+    config_data = load_config(config)
+    setup_logging(config_data["output"]["log_file"])
+    asyncio.run(backtest(config_data))
 
 
-async def backtest(
-    start_date,
-    end_date,
-    initial_capital,
-    raw_data_dir,
-    processed_data_dir,
-    index_symbol,
-    output_dir,
-):
-    # Set up data pipeline for preprocessing
-    fetcher = CSVFetcher(raw_data_dir)
-    processors = [
-        MovingAverageProcessor(100),
-        MovingAverageProcessor(200),
-        ATRProcessor(),
-    ]
-    saver = CSVSaver()
-    pipeline = DataPipeline(fetcher, processors, saver)
-    data_loader = DataLoader(pipeline)
+def setup_logging(log_file):
+    """Set up logging configuration."""
+    logger.remove()  # Remove default handler
+    logger.add(sys.stderr, level="INFO")
+    logger.add(log_file, rotation="10 MB", retention="1 week", level="DEBUG")
 
-    # Load and preprocess data
+
+async def backtest(config):
+    """Execute the backtesting process."""
+    # Set up data loader
+    fetcher = CSVFetcher(config["data"]["processed_data_dir"])
+    data_loader = DataLoader(fetcher)
+
+    # Load pre-processed data
     available_tickers = data_loader.get_available_tickers()
     logger.info(
-        f"Loading and preprocessing data for {len(available_tickers)} stocks and index {index_symbol}"
+        f"Loading pre-processed data for {len(available_tickers)} stocks and index {config['index']['symbol']}"
     )
-    stock_data = await data_loader.load_and_process_data(
-        available_tickers, start_date, end_date, processed_data_dir
+
+    start_date = pd.Timestamp(config["backtesting"]["start_date"])
+    end_date = pd.Timestamp(config["backtesting"]["end_date"])
+
+    stock_data = await data_loader.load_data(
+        available_tickers, str(start_date), str(end_date)
     )
-    index_data = await data_loader.load_and_process_data(
-        [index_symbol], start_date, end_date, processed_data_dir
+    index_data = await data_loader.load_data(
+        [config["index"]["symbol"]], str(start_date), str(end_date)
     )
     index_data = (
-        index_data[index_symbol] if index_symbol in index_data else pd.DataFrame()
+        index_data[config["index"]["symbol"]]
+        if config["index"]["symbol"] in index_data
+        else pd.DataFrame()
     )
 
     if not stock_data:
-        logger.error("No stock data available. Please download data first.")
+        logger.error("No stock data available. Please process data first.")
         return
 
     if index_data.empty:
         logger.warning(
-            f"No index data available for {index_symbol}. Proceeding without benchmark comparison."
+            f"No index data available for {config['index']['symbol']}. Proceeding without benchmark comparison."
         )
         return
 
-    # Get trading dates and align data
-    start_date_ts = pd.Timestamp(start_date)
-    end_date_ts = pd.Timestamp(end_date)
-    trading_dates = get_trading_dates(
-        stock_data, index_data, start_date_ts, end_date_ts
+    # Verify that all required indicators are available
+    required_columns = (
+        ["Adj Close"]
+        + [
+            f"MA{config['indicator_configs'][key]['window']}"
+            for key in config["indicator_configs"]
+            if key.startswith("MA")
+        ]
+        + ["ATR"]
     )
+    for ticker, data in stock_data.items():
+        missing_columns = [col for col in required_columns if col not in data.columns]
+        if missing_columns:
+            logger.error(f"Missing required columns for {ticker}: {missing_columns}")
+            return
+
+    # Get trading dates and align data
+    trading_dates = get_trading_dates(stock_data, index_data, start_date, end_date)
     stock_data, index_data = align_data(stock_data, index_data, trading_dates)
 
     # Initialize strategy components
-    ranking_strategy = MomentumRankingStrategy()
+    ranking_strategy = MomentumRankingStrategy(
+        momentum_window=config["strategy"]["momentum_window"],
+        ma_window=config["strategy"]["ma_window"],
+        max_gap=config["strategy"]["max_gap"],
+    )
     position_sizer = PositionSizer()
-    rebalance_strategy = ThresholdRebalanceStrategy()
+    rebalance_strategy = ThresholdRebalanceStrategy(
+        threshold=config["strategy"]["rebalance_threshold"]
+    )
+    transaction_costs = TransactionCosts(
+        commission_rate=config["transaction_costs"]["commission_rate"],
+        slippage_rate=config["transaction_costs"]["slippage_rate"],
+    )
     index_filter = IndexFilter()
-    portfolio = Portfolio(ranking_strategy, position_sizer, index_filter)
+    portfolio = Portfolio(
+        ranking_strategy, position_sizer, index_filter, transaction_costs
+    )
     rebalancer = PositionRebalancer(position_sizer, rebalance_strategy)
+    trade_logger = TradeLogger()
 
     # Run backtest
     logger.info("Running backtest...")
-    backtester = Backtester(portfolio, rebalancer)
-    portfolio_performance = backtester.run(
-        stock_data, index_data, trading_dates, initial_capital
+    backtester = Backtester(portfolio, rebalancer, trade_logger)
+    portfolio_performance, trade_history = backtester.run(
+        stock_data, index_data, trading_dates, config["backtesting"]["initial_capital"]
     )
 
     # Analyze and visualize results
     logger.info("Analyzing results and creating visualizations...")
     benchmark_performance = backtester.get_benchmark_performance(
-        index_data, initial_capital
-    )
-    plot_portfolio_performance(portfolio_performance, benchmark_performance, output_dir)
-    plot_portfolio_composition(
-        portfolio.positions, stock_data, trading_dates[-1], output_dir
-    )
-    plot_rolling_metrics(
-        portfolio_performance, benchmark_performance, window=252, output_dir=output_dir
+        index_data, config["backtesting"]["initial_capital"]
     )
 
-    summary, composition, daily_data = create_results_summary(
+    summary, composition_df, trade_analysis, _ = create_results_summary(
         portfolio_performance,
         benchmark_performance,
         portfolio.positions,
         stock_data,
-        output_dir,
+        trade_history,
+        config["output"]["dir"],
     )
 
-    logger.info(f"Backtest results saved in: {output_dir}")
+    logger.info(f"Backtest results saved in: {config['output']['dir']}")
     logger.info("\nBacktest Summary:")
     logger.info(summary.to_string(index=False))
+
+    logger.info("\nFinal Portfolio Composition:")
+    logger.info(composition_df.to_string(index=False))
+
+    logger.info("\nTrade Analysis:")
+    logger.info(trade_analysis.to_string(index=False))
 
 
 if __name__ == "__main__":

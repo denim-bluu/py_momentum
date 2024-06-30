@@ -1,19 +1,25 @@
-# File: backtester.py
-
-from typing import Dict, List
+# backtester.py
+from typing import Dict, List, Tuple
 
 import pandas as pd
-import tqdm
 from loguru import logger
+from tqdm import tqdm
 
+from py_momentum.logger.trade_logger import TradeLogger
 from py_momentum.strategy.portfolio import Portfolio
 from py_momentum.strategy.rebalancer import PositionRebalancer
 
 
 class Backtester:
-    def __init__(self, portfolio: Portfolio, rebalancer: PositionRebalancer):
+    def __init__(
+        self,
+        portfolio: Portfolio,
+        rebalancer: PositionRebalancer,
+        trade_logger: TradeLogger,
+    ):
         self.portfolio = portfolio
         self.rebalancer = rebalancer
+        self.trade_logger = trade_logger
 
     def run(
         self,
@@ -21,12 +27,13 @@ class Backtester:
         index_data: pd.DataFrame,
         trading_dates: List[pd.Timestamp],
         initial_capital: float,
-    ) -> pd.Series:
+    ) -> Tuple[pd.Series, pd.DataFrame]:
         logger.info(f"Starting backtesting with initial capital: {initial_capital}")
         self.portfolio.cash = initial_capital
+        self.portfolio.set_trade_logger(self.trade_logger)
         portfolio_values = []
 
-        for date in tqdm.tqdm(trading_dates):
+        for date in tqdm(trading_dates, desc="Backtesting"):
             if date.weekday() == 2:  # Wednesday
                 logger.info(f"--- Portfolio Update: {date.date()} ---")
                 self.portfolio.update_portfolio_composition(
@@ -47,7 +54,9 @@ class Backtester:
                 self._log_portfolio_summary(stock_data, date)
 
         logger.success("Backtesting completed.")
-        return pd.Series(portfolio_values, index=trading_dates)
+        return pd.Series(
+            portfolio_values, index=trading_dates
+        ), self.trade_logger.get_trade_history()
 
     def _log_portfolio_summary(
         self, stock_data: Dict[str, pd.DataFrame], date: pd.Timestamp
@@ -61,7 +70,7 @@ class Backtester:
             self.portfolio.positions.items(),
             key=lambda x: x[1] * stock_data[x[0]].loc[date]["Adj Close"].item(),
             reverse=True,
-        )  # type: ignore
+        )
         for ticker, shares in sorted_positions[:5]:
             value = shares * stock_data[ticker].loc[date]["Adj Close"]
             logger.info(
