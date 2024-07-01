@@ -1,6 +1,10 @@
-class PositionSizer:
-    def __init__(self, basis_points: float = 10):
-        self.basis_points = basis_points
+from py_momentum.strategy.interfaces import PositionSizer
+
+
+class FixedRiskPositionSizer(PositionSizer):
+    def __init__(self, risk_per_trade: float = 0.01):
+        self.risk_per_trade = risk_per_trade
 
     def calculate_position_size(self, account_value: float, atr: float) -> int:
-        return int(account_value * (self.basis_points / 10000) / atr)
+        risk_amount = account_value * self.risk_per_trade
+        return int(risk_amount / atr)

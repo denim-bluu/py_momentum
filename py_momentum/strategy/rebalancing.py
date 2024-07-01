@@ -1,17 +1,13 @@
-from typing import Dict, Protocol
+from typing import Dict
 
 import pandas as pd
 from loguru import logger
 
-from py_momentum.strategy.portfolio import Portfolio
-from py_momentum.strategy.position_sizing import PositionSizer
+from py_momentum.strategy.interfaces import PositionSizer, RebalanceStrategy
+from py_momentum.portfolio.portfolio_manager import Portfolio
 
 
-class RebalanceStrategy(Protocol):
-    def should_rebalance(self, current_shares: int, target_shares: int) -> bool: ...
-
-
-class ThresholdRebalanceStrategy:
+class ThresholdRebalanceStrategy(RebalanceStrategy):
     def __init__(self, threshold: float = 0.1):
         self.threshold = threshold
 

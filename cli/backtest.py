@@ -1,4 +1,3 @@
-# backtester_cli.py
 import asyncio
 import sys
 
@@ -7,26 +6,23 @@ import pandas as pd
 from loguru import logger
 
 from py_momentum.analysis.results_summary import create_results_summary
-from py_momentum.backtester.backtester import Backtester
-from py_momentum.data.data_components import CSVFetcher, DataLoader
-from py_momentum.logger.trade_logger import TradeLogger
-from py_momentum.strategy.filters import IndexFilter
-from py_momentum.strategy.portfolio import Portfolio
-from py_momentum.strategy.position_sizing import PositionSizer
-from py_momentum.strategy.ranking import MomentumRankingStrategy
-from py_momentum.strategy.rebalancer import (
-    PositionRebalancer,
-    ThresholdRebalanceStrategy,
-)
-from py_momentum.strategy.transaction_costs import TransactionCosts
+from py_momentum.backtesting.backtester import Backtester
+from py_momentum.data.fetchers import CSVFetcher
+from py_momentum.data.pipeline import DataLoader
+from py_momentum.logging.trade_logger import TradeLogger
+from py_momentum.portfolio.portfolio_manager import Portfolio, PortfolioManager
+from py_momentum.strategy.factory import StrategyFactory
+from py_momentum.trading.trade_executor import TradeExecutor
+from py_momentum.trading.transaction_costs import TransactionCosts
 from py_momentum.utils.config_util import load_config
 from py_momentum.utils.date_utils import align_data, get_trading_dates
 
 
 @click.command()
-@click.option("--config", default="config.yaml", help="Path to configuration file")
+@click.option(
+    "--config", default="config/config.yaml", help="Path to configuration file"
+)
 def run_backtest(config):
-    """Run the backtesting process using the specified configuration."""
     config_data = load_config(config)
     setup_logging(config_data["output"]["log_file"])
     asyncio.run(backtest(config_data))
@@ -45,15 +41,18 @@ async def backtest(config):
     fetcher = CSVFetcher(config["data"]["processed_data_dir"])
     data_loader = DataLoader(fetcher)
 
-    # Load pre-processed data
-    available_tickers = data_loader.get_available_tickers()
-    logger.info(
-        f"Loading pre-processed data for {len(available_tickers)} stocks and index {config['index']['symbol']}"
-    )
-
     start_date = pd.Timestamp(config["backtesting"]["start_date"])
     end_date = pd.Timestamp(config["backtesting"]["end_date"])
 
+    # Load pre-processed data
+    available_tickers = data_loader.get_available_tickers()
+    if available_tickers is None:
+        logger.error("This data fetcher doesn't support getting available tickers.")
+        raise NotImplementedError
+    else:
+        logger.info(
+            f"Loading pre-processed data for {len(available_tickers)} stocks and index {config['index']['symbol']}"
+        )
     stock_data = await data_loader.load_data(
         available_tickers, str(start_date), str(end_date)
     )
@@ -96,32 +95,37 @@ async def backtest(config):
     trading_dates = get_trading_dates(stock_data, index_data, start_date, end_date)
     stock_data, index_data = align_data(stock_data, index_data, trading_dates)
 
-    # Initialize strategy components
-    ranking_strategy = MomentumRankingStrategy(
-        momentum_window=config["strategy"]["momentum_window"],
-        ma_window=config["strategy"]["ma_window"],
-        max_gap=config["strategy"]["max_gap"],
+    # Initialize strategy components using the factory
+    ranking_strategy = StrategyFactory.create_ranking_strategy(
+        config["strategy"]["ranking_strategy"]
     )
-    position_sizer = PositionSizer()
-    rebalance_strategy = ThresholdRebalanceStrategy(
-        threshold=config["strategy"]["rebalance_threshold"]
+    position_sizer = StrategyFactory.create_position_sizer(
+        config["strategy"]["position_sizer"]
     )
+    market_filter = StrategyFactory.create_market_filter(
+        config["strategy"]["market_filter"]
+    )
+    rebalance_strategy = StrategyFactory.create_rebalance_strategy(
+        config["strategy"]["rebalance_strategy"]
+    )
+
     transaction_costs = TransactionCosts(
         commission_rate=config["transaction_costs"]["commission_rate"],
         slippage_rate=config["transaction_costs"]["slippage_rate"],
     )
-    index_filter = IndexFilter()
-    portfolio = Portfolio(
-        ranking_strategy, position_sizer, index_filter, transaction_costs
-    )
-    rebalancer = PositionRebalancer(position_sizer, rebalance_strategy)
+
     trade_logger = TradeLogger()
+    trade_executor = TradeExecutor(transaction_costs, trade_logger)
+    portfolio_manager = PortfolioManager(
+        ranking_strategy, position_sizer, market_filter, trade_executor
+    )
 
     # Run backtest
     logger.info("Running backtest...")
-    backtester = Backtester(portfolio, rebalancer, trade_logger)
-    portfolio_performance, trade_history = backtester.run(
-        stock_data, index_data, trading_dates, config["backtesting"]["initial_capital"]
+    initial_portfolio = Portfolio(initial_cash=config["backtesting"]["initial_capital"])
+    backtester = Backtester(portfolio_manager, rebalance_strategy, trade_logger)
+    final_portfolio, portfolio_performance, trade_history = backtester.run(
+        stock_data, index_data, trading_dates, initial_portfolio
     )
 
     # Analyze and visualize results
@@ -130,10 +134,10 @@ async def backtest(config):
         index_data, config["backtesting"]["initial_capital"]
     )
 
-    summary, composition_df, trade_analysis, _ = create_results_summary(
+    summary, composition_df, trade_analysis, daily_data = create_results_summary(
         portfolio_performance,
         benchmark_performance,
-        portfolio.positions,
+        final_portfolio.positions,
         stock_data,
         trade_history,
         config["output"]["dir"],

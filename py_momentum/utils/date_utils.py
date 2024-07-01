@@ -9,7 +9,6 @@ def get_trading_dates(
     start_date: pd.Timestamp,
     end_date: pd.Timestamp,
 ) -> List[pd.Timestamp]:
-    """Get all trading dates within the specified range from the actual data."""
     all_dates = set()
     for df in stock_data.values():
         all_dates.update(df.index)
@@ -26,7 +25,6 @@ def get_trading_dates(
 
 
 def filter_data_to_dates(data: pd.DataFrame, dates: List[pd.Timestamp]) -> pd.DataFrame:
-    """Filter DataFrame to include only the specified dates."""
     return data.loc[data.index.isin(dates)]
 
 
@@ -35,7 +33,6 @@ def align_data(
     index_data: pd.DataFrame,
     dates: List[pd.Timestamp],
 ) -> Tuple[Dict[str, pd.DataFrame], pd.DataFrame]:
-    """Align all data to the specified dates."""
     aligned_stock_data = {
         ticker: filter_data_to_dates(df, dates) for ticker, df in stock_data.items()
     }

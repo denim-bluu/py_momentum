@@ -1,16 +1,62 @@
-# downloader_cli.py
 import asyncio
 from datetime import datetime
 from typing import List
 
 import aiohttp
 import click
+import pandas as pd
 from aiolimiter import AsyncLimiter
 from loguru import logger
-import pandas as pd
 
-from py_momentum.data.data_components import CSVSaver, YahooFinanceFetcher
+from py_momentum.data.fetchers import YahooFinanceFetcher
+from py_momentum.data.savers import CSVSaver
 from py_momentum.utils.config_util import load_config
+
+
+@click.command()
+@click.option(
+    "--config", default="config/config.yaml", help="Path to configuration file"
+)
+@click.option("--tickers", "-t", help="Comma-separated list of stock tickers")
+@click.option(
+    "--file",
+    "-f",
+    type=click.Path(exists=True),
+    help="File containing stock tickers (one per line)",
+)
+def download_data(config, tickers, file):
+    config_data = load_config(config)
+
+    output = config_data["data"]["raw_data_dir"]
+    start_date = pd.to_datetime(config_data["download"]["start_date"])
+    end_date = pd.to_datetime(config_data["download"]["end_date"])
+    concurrent_limit = config_data["download"]["concurrent_limit"]
+    rate_limit = config_data["download"]["rate_limit"]
+
+    if tickers:
+        ticker_list = [t.strip() for t in tickers.split(",")]
+    elif file:
+        with open(file, "r") as f:
+            ticker_list = [line.strip() for line in f if line.strip()]
+    else:
+        logger.error("Please provide either --tickers or --file option.")
+        return
+
+    # Adjust start_date to include lookback period
+    adjusted_start_date = start_date - pd.Timedelta(
+        days=config_data["max_lookback_days"]
+    )
+
+    asyncio.run(
+        run_downloader(
+            ticker_list,
+            adjusted_start_date,
+            end_date,
+            output,
+            concurrent_limit,
+            rate_limit,
+        )
+    )
 
 
 async def fetch_and_save_stock(
@@ -71,50 +117,6 @@ async def run_downloader(
         await asyncio.gather(*tasks)
 
         logger.info(f"Download completed. Raw data saved in: {output_dir}")
-
-
-@click.command()
-@click.option("--config", default="config.yaml", help="Path to configuration file")
-@click.option("--tickers", "-t", help="Comma-separated list of stock tickers")
-@click.option(
-    "--file",
-    "-f",
-    type=click.Path(exists=True),
-    help="File containing stock tickers (one per line)",
-)
-def download_data(config, tickers, file):
-    config_data = load_config(config)
-
-    start_date = pd.to_datetime(config_data["backtesting"]["start_date"])
-    end_date = pd.to_datetime(config_data["backtesting"]["end_date"])
-    output = config_data["data"]["raw_data_dir"]
-    concurrent_limit = config_data.get("download", {}).get("concurrent_limit", 5)
-    rate_limit = config_data.get("download", {}).get("rate_limit", 30)
-
-    if tickers:
-        ticker_list = [t.strip() for t in tickers.split(",")]
-    elif file:
-        with open(file, "r") as f:
-            ticker_list = [line.strip() for line in f if line.strip()]
-    else:
-        logger.error("Please provide either --tickers or --file option.")
-        return
-
-    # Adjust start_date to include lookback period
-    adjusted_start_date = start_date - pd.Timedelta(
-        days=config_data["max_lookback_days"]
-    )
-
-    asyncio.run(
-        run_downloader(
-            ticker_list,
-            adjusted_start_date,
-            end_date,
-            output,
-            concurrent_limit,
-            rate_limit,
-        )
-    )
 
 
 if __name__ == "__main__":

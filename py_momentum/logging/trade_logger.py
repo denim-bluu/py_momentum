@@ -1,4 +1,3 @@
-# trade_logger.py
 import pandas as pd
 from loguru import logger
 

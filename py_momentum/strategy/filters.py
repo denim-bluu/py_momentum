@@ -1,7 +1,9 @@
 import pandas as pd
 
+from py_momentum.strategy.interfaces import MarketFilter
 
-class IndexFilter:
+
+class MovingAverageFilter(MarketFilter):
     def __init__(self, ma_window: int = 200):
         self.ma_window = ma_window
 

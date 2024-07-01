@@ -1,0 +1,52 @@
+backtesting:
+  start_date: "2018-01-01"
+  end_date: "2024-01-01"
+  initial_capital: 100000
+
+data:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+
+index:
+  symbol: "^GSPC"
+
+output:
+  dir: "results/backtest_results"
+  log_file: "logs/backtest.log"
+
+strategy:
+  ranking_strategy:
+    type: "momentum"
+    momentum_window: 90 # Number of days to calculate momentum
+    ma_window: 100 # Number of days to calculate moving average
+    max_gap: 0.15 # Maximum gap between the stock and the moving average
+    pct_rank: 0.2
+  position_sizer:
+    type: "fixed_risk"
+    risk_per_trade: 0.01
+  market_filter:
+    type: "moving_average"
+    ma_window: 200
+  rebalance_strategy:
+    type: "threshold"
+    threshold: 0.1
+
+transaction_costs:
+  commission_rate: 0.001
+  slippage_rate: 0.0005
+
+indicator_configs:
+  MA100:
+    window: 100
+  MA200:
+    window: 200
+  ATR:
+    window: 14
+
+download:
+  concurrent_limit: 5
+  rate_limit: 30
+  start_date: "1999-01-01"
+  end_date: "2024-01-01"
+
+max_lookback_days: 252 # Maximum lookback period for any indicator or strategy
