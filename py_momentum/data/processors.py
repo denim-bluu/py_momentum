@@ -1,29 +1,13 @@
-from abc import ABC, abstractmethod
+from typing import Dict
 
 import pandas as pd
-
-from py_momentum.utils.calculations import calculate_atr
-
-
-class DataProcessor(ABC):
-    @abstractmethod
-    def process(self, data: pd.DataFrame) -> pd.DataFrame:
-        pass
+from .utils import calculate_atr
 
 
-class MovingAverageProcessor(DataProcessor):
-    def __init__(self, window: int):
-        self.window = window
-
-    def process(self, data: pd.DataFrame) -> pd.DataFrame:
-        data[f"MA{self.window}"] = data["Adj Close"].rolling(window=self.window).mean()
-        return data
-
-
-class ATRProcessor(DataProcessor):
-    def __init__(self, window: int = 14):
-        self.window = window
-
-    def process(self, data: pd.DataFrame) -> pd.DataFrame:
-        data["ATR"] = calculate_atr(data, self.window)
-        return data
+def process_data(data: Dict[str, pd.DataFrame], **kwargs) -> Dict[str, pd.DataFrame]:
+    processed_data = {}
+    for ticker, df in data.items():
+        df["MA_100"] = df["Adj Close"].rolling(window=100).mean()
+        df["ATR_20"] = calculate_atr(df, window=20)
+        processed_data[ticker] = df
+    return processed_data

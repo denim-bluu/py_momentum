@@ -1,0 +1,2 @@
+[32m2024-07-05 08:00:59 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - e8f63a8d-9ce8-4493-bc09-863404bff286 - 99521 - LOGS_CAPTURED - Started capturing logs in process (pid: 99521).
+[32m2024-07-05 08:01:07 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - e8f63a8d-9ce8-4493-bc09-863404bff286 - 99521 - stock_data - STEP_START - Started execution of step "stock_data".

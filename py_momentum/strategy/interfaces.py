@@ -1,32 +1,24 @@
-from abc import ABC, abstractmethod
-from typing import Dict, List
+from datetime import date
+from typing import Dict, List, Protocol
 
 import pandas as pd
 
 
-class RankingStrategy(ABC):
-    @abstractmethod
-    def rank_stocks(self, stock_data: Dict[str, pd.DataFrame]) -> List[str]:
-        pass
-
-    @abstractmethod
-    def is_eligible(self, df: pd.DataFrame) -> bool:
-        pass
+class TrendFilter(Protocol):
+    def is_trend_positive(self, data: pd.DataFrame, current_date: date) -> bool: ...
 
 
-class PositionSizer(ABC):
-    @abstractmethod
-    def calculate_position_size(self, account_value: float, atr: float) -> int:
-        pass
+class RankingMethod(Protocol):
+    def rank_assets(
+        self, data: Dict[str, pd.DataFrame], current_date: date
+    ) -> List[str]: ...
 
 
-class MarketFilter(ABC):
-    @abstractmethod
-    def is_bullish(self, index_data: pd.DataFrame) -> bool:
-        pass
-
-
-class RebalanceStrategy(ABC):
-    @abstractmethod
-    def should_rebalance(self, current_shares: int, target_shares: int) -> bool:
-        pass
+class TradingStrategy(Protocol):
+    def generate_signals(
+        self,
+        current_date: date,
+        market_data: Dict[str, pd.DataFrame],
+        portfolio: Dict[str, float],
+        index_data: pd.DataFrame,
+    ) -> Dict[str, str]: ...

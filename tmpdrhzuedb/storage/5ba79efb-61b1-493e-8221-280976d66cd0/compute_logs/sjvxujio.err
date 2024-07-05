@@ -1,0 +1,8 @@
+[32m2024-07-05 07:59:02 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - LOGS_CAPTURED - Started capturing logs in process (pid: 93480).
+[32m2024-07-05 07:59:02 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - snp500_symbols - STEP_START - Started execution of step "snp500_symbols".
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mINFO[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - snp500_symbols - Found 503 S&P 500 symbols
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - snp500_symbols - STEP_OUTPUT - Yielded output "result" of type "[String]". (Type check passed).
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - snp500_symbols - Writing file at: /home/migojipsa/github/py_momentum/tmpdrhzuedb/storage/snp500_symbols using PickledObjectFilesystemIOManager...
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - snp500_symbols - ASSET_MATERIALIZATION - Materialized value snp500_symbols.
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - snp500_symbols - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-07-05 07:59:03 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 5ba79efb-61b1-493e-8221-280976d66cd0 - 93480 - snp500_symbols - STEP_SUCCESS - Finished execution of step "snp500_symbols" in 310ms.

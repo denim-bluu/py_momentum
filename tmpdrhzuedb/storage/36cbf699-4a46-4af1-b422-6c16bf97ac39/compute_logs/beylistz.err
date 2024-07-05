@@ -1,0 +1,991 @@
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - 96100 - LOGS_CAPTURED - Started capturing logs in process (pid: 96100).
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - 96100 - stock_data - STEP_START - Started execution of step "stock_data".
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - Loading file from: /home/migojipsa/github/py_momentum/tmpdrhzuedb/storage/snp500_symbols using PickledObjectFilesystemIOManager...
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - 96100 - stock_data - LOADED_INPUT - Loaded input "snp500_symbols" using input manager "io_manager"
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - 96100 - stock_data - STEP_INPUT - Got input "snp500_symbols" of type "[String]". (Type check passed).
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['MMM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for MMM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AOS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AOS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ABT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ABT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ABBV']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ABBV on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ACN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:41 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ACN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ADBE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ADBE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AES']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AES on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AFL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AFL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['A']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for A on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['APD']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:42 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for APD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ABNB']: YFChartError("%ticker%: Data doesn't exist for startDate = 1578200400, endDate = 1578286800")
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ABNB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AKAM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AKAM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ALB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ALB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ARE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ARE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ALGN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ALGN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ALLE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ALLE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['LNT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for LNT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ALL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ALL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['GOOGL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for GOOGL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['GOOG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for GOOG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['MO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for MO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMZN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:43 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMZN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMCR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMCR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AEE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AEE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AAL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AAL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AEP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AEP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AXP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AXP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AIG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AIG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AWK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AWK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AME']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:44 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AME on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMGN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMGN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['APH']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for APH on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ADI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ADI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ANSS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ANSS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AON']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AON on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['APA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for APA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AAPL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AAPL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AMAT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AMAT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['APTV']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for APTV on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ACGL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ACGL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ADM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ADM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ANET']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ANET on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AJG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AJG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AIZ']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AIZ on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['T']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for T on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ATO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ATO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ADSK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:46 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ADSK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ADP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ADP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AZO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AZO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AVB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AVB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AVY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AVY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AXON']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AXON on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BKR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BKR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BALL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BALL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BAC']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BAC on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BBWI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:47 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BBWI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BAX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BAX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BDX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BDX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BRK.B']: YFTzMissingError('$%ticker%: possibly delisted; No timezone found')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BRK.B on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BBY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BBY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BIO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BIO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['TECH']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for TECH on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BIIB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BIIB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BLK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BLK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BKNG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BKNG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BWA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BWA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BSX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BSX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BMY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BMY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['AVGO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for AVGO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:49 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BRO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BRO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BF.B']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BF.B on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BLDR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BLDR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['BXP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for BXP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CDNS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CDNS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CZR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CZR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CPT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:50 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CPT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CPB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:51 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CPB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['COF']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:51 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for COF on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CAH']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:51 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CAH on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['KMX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:51 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for KMX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CCL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:51 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CCL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CARR']: YFChartError("%ticker%: Data doesn't exist for startDate = 1578200400, endDate = 1578286800")
+[32m2024-07-05 07:59:52 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CARR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CTLT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:52 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CTLT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CAT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:52 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CAT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CBOE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:52 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CBOE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CBRE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:52 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CBRE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CDW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CDW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['COR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for COR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CNC']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CNC on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CNP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CNP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CF']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CF on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CHRW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CHRW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CRL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CRL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['SCHW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for SCHW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CHTR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CHTR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CVX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CVX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CMG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:53 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CMG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CHD']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CHD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CINF']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CINF on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CTAS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CTAS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CSCO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CSCO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['C']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for C on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CFG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CFG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CLX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:54 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CLX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CME']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CME on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CMS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CMS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['KO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for KO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CTSH']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CTSH on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CMCSA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CMCSA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CAG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CAG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['COP']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:55 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for COP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ED']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:56 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ED on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['STZ']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:56 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for STZ on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CEG']: YFChartError("%ticker%: Data doesn't exist for startDate = 1578200400, endDate = 1578286800")
+[32m2024-07-05 07:59:57 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CEG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['COO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:57 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for COO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CPRT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:57 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CPRT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['GLW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for GLW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CPAY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CPAY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CTVA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CTVA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CSGP on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['COST']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for COST on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CTRA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CTRA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CRWD']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CRWD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CCI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CCI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CSX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CSX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CMI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CMI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['CVS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:58 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for CVS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DHR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DHR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DRI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DRI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DVA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DVA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DAY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DAY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DECK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DECK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DAL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DAL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DVN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DVN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DXCM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DXCM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FANG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FANG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DLR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DLR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DFS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DFS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DLTR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 07:59:59 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DLTR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['D']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for D on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DPZ']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DPZ on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DOV']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DOV on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DOW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DOW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DHI']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DHI on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DTE']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DTE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DUK']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DUK on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['DD']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for DD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EMN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EMN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ETN']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ETN on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EBAY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EBAY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ECL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ECL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EIX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EIX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EW']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EW on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EA']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EA on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ELV']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ELV on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['LLY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for LLY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EMR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EMR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ENPH']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ENPH on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ETR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ETR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EOG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EOG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EPAM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EPAM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EQT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:01 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EQT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EFX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EFX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EQIX']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EQIX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EQR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EQR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ESS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ESS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EL on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ETSY']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ETSY on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EVRG']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EVRG on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['ES']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:02 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for ES on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EXC']: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)
+[32m2024-07-05 08:00:03 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EXC on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EXPE']: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)
+[32m2024-07-05 08:00:14 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EXPE on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EXPD']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:22 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EXPD on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['EXR']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:23 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for EXR on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['XOM']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:23 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for XOM on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FFIV']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:23 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FFIV on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FDS']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:23 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FDS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FICO']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:24 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FICO on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FAST']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:00:29 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FAST on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FRT']: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)
+[32m2024-07-05 08:00:34 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FRT on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+[32m2024-07-05 08:00:40 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FDX on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FIS']: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)
+[32m2024-07-05 08:00:48 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FIS on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FITB']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)')
+[32m2024-07-05 08:01:00 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FITB on 2020-01-05
+[*********************100%%**********************]  1 of 1 completed
+
+1 Failed download:
+['FSLR']: possibly delisted; No price data found  (1d 2020-01-05 00:00:00 -> 2020-01-06 00:00:00)
+[32m2024-07-05 08:03:45 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 36cbf699-4a46-4af1-b422-6c16bf97ac39 - stock_data - No data available for FSLR on 2020-01-05

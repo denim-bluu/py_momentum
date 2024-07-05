@@ -7,22 +7,23 @@ readme = "README.md"
 packages = [{ include = "py_momentum", from = "." }]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 yfinance = "^0.2.40"
 scipy = "^1.14.0"
-numpy = "^2.0.0"
 pandas = "^2.2.2"
 matplotlib = "^3.9.0"
-seaborn = "^0.13.2"
 plotly = "^5.22.0"
-
-
 aiohttp = "^3.9.5"
 aiolimiter = "^1.1.0"
 click = "^8.1.7"
 rich = "^13.7.1"
 tqdm = "^4.66.4"
 loguru = "^0.7.2"
+
+sqlalchemy = "^2.0.31"
+great-expectations = "^0.18.18"
+dagster = "^1.7.12"
+dagster-webserver = "^1.7.12"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.5.0"
 mypy = "^1.10.1"
