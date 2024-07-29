@@ -1,10 +1,0 @@
-[32m2024-07-04 21:27:18 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 70f55be8-5c83-46ae-a5dc-7665bfd9c130 - 48412 - LOGS_CAPTURED - Started capturing logs in process (pid: 48412).
-[32m2024-07-04 21:27:18 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 70f55be8-5c83-46ae-a5dc-7665bfd9c130 - 48412 - stock_data - STEP_START - Started execution of step "stock_data".
-[*********************100%%**********************]  1 of 1 completed
-[32m2024-07-04 21:27:18 +0100[0m - dagster - [34mINFO[0m - __ASSET_JOB_0 - 70f55be8-5c83-46ae-a5dc-7665bfd9c130 - stock_data - Fetched data for                  Open       High        Low      Close  Adj Close     Volume
-Date                                                                        
-2020-01-02  74.059998  75.150002  73.797501  75.087502  72.960472  135480400
-[*********************100%%**********************]  1 of 1 completed
-[32m2024-07-04 21:27:19 +0100[0m - dagster - [34mINFO[0m - __ASSET_JOB_0 - 70f55be8-5c83-46ae-a5dc-7665bfd9c130 - stock_data - Fetched data for                  Open       High        Low      Close  Adj Close    Volume
-Date                                                                       
-2020-01-02  67.420502  68.433998  67.324501  68.433998  68.355545  27278000
