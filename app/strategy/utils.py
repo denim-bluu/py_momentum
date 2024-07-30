@@ -1,47 +1,63 @@
-from typing import List
-
+from typing import List, Optional
 import numpy as np
-import pandas as pd
 from app.data.models import StockData, StockDataPoint
 from sklearn.linear_model import LinearRegression
+from functools import lru_cache
 
 
 def calculate_momentum_score(prices: np.ndarray, lookback: int = 90) -> float:
+    if len(prices) < lookback:
+        raise ValueError(
+            f"Insufficient data points. Expected at least {lookback}, got {len(prices)}"
+        )
+
     prices = prices[-lookback:]
     log_returns = np.diff(np.log(prices))
-    model = LinearRegression().fit(
-        np.arange(len(log_returns)).reshape(-1, 1), log_returns
-    )
-    r_value = model.score(np.arange(len(log_returns)).reshape(-1, 1), log_returns)
+    x = np.arange(len(log_returns)).reshape(-1, 1)
+
+    model = LinearRegression().fit(x, log_returns)
+    r_value = model.score(x, log_returns)
     slope = model.coef_[0]
-    return slope * (r_value**2)
+
+    return float(slope * (r_value**2))
 
 
-def calculate_moving_average(data_points: List[StockDataPoint], period: int) -> float:
-    prices = [point.close for point in data_points[-period:]]
-    return float(np.mean(prices))
+@lru_cache(maxsize=128)
+def calculate_moving_average(prices: tuple[float, ...], period: int) -> float:
+    if len(prices) < period:
+        raise ValueError(
+            f"Insufficient data points. Expected at least {period}, got {len(prices)}"
+        )
+
+    return float(np.mean(prices[-period:]))
 
 
-def calculate_atr(stock_data: StockData, period: int = 14) -> float:
-    high = [point.high for point in stock_data.data_points[-period - 1 :]]
-    low = [point.low for point in stock_data.data_points[-period - 1 :]]
-    close = [point.close for point in stock_data.data_points[-period - 1 :]]
+def calculate_atr(stock_data: StockData, period: int = 14) -> Optional[float]:
+    if len(stock_data.data_points) < period + 1:
+        return None
 
-    tr1 = pd.Series(high) - pd.Series(low)
-    tr2 = abs(pd.Series(high) - pd.Series(close).shift())
-    tr3 = abs(pd.Series(low) - pd.Series(close).shift())
+    high = np.array([point.high for point in stock_data.data_points[-period - 1 :]])
+    low = np.array([point.low for point in stock_data.data_points[-period - 1 :]])
+    close = np.array([point.close for point in stock_data.data_points[-period - 1 :]])
 
-    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
-    atr = tr.rolling(window=period).mean().iloc[-1]
-    return atr
+    tr1 = high[1:] - low[1:]
+    tr2 = np.abs(high[1:] - close[:-1])
+    tr3 = np.abs(low[1:] - close[:-1])
+
+    tr = np.max(np.stack([tr1, tr2, tr3]), axis=0)
+    atr = np.mean(tr)
+
+    return float(atr)
 
 
 def has_recent_large_gap(
     data_points: List[StockDataPoint], lookback_period: int, threshold: float
-) -> bool:
-    for i in range(1, min(lookback_period, len(data_points))):
-        prev_close = data_points[-i - 1].close
-        current_open = data_points[-i].open
-        if abs(current_open - prev_close) / prev_close > threshold:
-            return True
-    return False
+) -> np.bool:
+    if len(data_points) < 2:
+        return np.bool(False)
+
+    closes = np.array([point.close for point in data_points[-lookback_period - 1 : -1]])
+    opens = np.array([point.open for point in data_points[-lookback_period:]])
+
+    gaps = np.abs(opens - closes) / closes
+    return np.any(gaps > threshold)

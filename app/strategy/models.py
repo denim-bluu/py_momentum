@@ -33,8 +33,7 @@ class StrategyParameters(BaseModel):
 
 class SignalRequest(BaseModel):
     symbols: List[str]
-    start_date: date
-    end_date: date
+    date: date
     interval: str
     market_index: str
 
