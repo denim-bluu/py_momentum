@@ -80,11 +80,75 @@ pdm install
 
 ## Running the Application
 
+Before start the application, you need to initiate the PostgreSQL database and Redis server via Docker:
+
+```sh
+docker-compose up -d
+# (If you want to tear down the services, use `docker-compose down`)
+```
+
 To start the application, execute:
 
 ```sh
-python py_momentum/app/main.py
+python main.py
 ```
+
+## Example Requests
+
+### Data Service
+
+1. Fetch Historical Data
+
+   ```sh
+   curl -X GET "http://localhost:8000/api/v1/data/stock/AAPL?start_date=2023-01-02&end_date=2023-04-09&interval=1d"
+   ```
+
+2. Batch Fetch Historical Data
+
+   ```sh
+   curl -X POST http://localhost:8000/api/v1/data/batch \
+   -H "Content-Type: application/json" \
+   -d '{
+   "symbols": ["AAPL", "GOOGL", "MSFT"],
+   "start_date": "2023-01-01",
+   "end_date": "2023-12-30",
+   "interval": "1d"
+   }'
+   ```
+
+### Strategy Service
+
+1. Get Strategy Parameters
+
+   ```sh
+   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters/momentum 
+   ```
+
+2. Configure Strategy Parameters (Not fully implemented)
+
+   ```sh
+   curl -X POST http://localhost:8000/api/v1/strategy/configure_strategy/momentum \
+   -H "Content-Type: application/json" \
+   -d '{
+   "lookback_period": 120,
+   "top_percentage": 0.3
+   }'
+   ```
+
+3. Generate signals
+
+   ```sh
+   curl --location http://localhost:8000/api/v1/strategy/generate_signals \
+   --header 'Content-Type: application/json' \
+   --data '{
+   "symbols": ["AAPL", "GOOGL", "MSFT"],
+   "start_date": "2023-01-01",
+   "end_date": "2023-12-31",
+   "interval": "1d",
+   "market_index": "^GSPC"
+   }'
+
+   ```
 
 ## Testing
 
