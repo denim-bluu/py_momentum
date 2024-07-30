@@ -1,22 +1,0 @@
-[32m2024-07-04 21:27:13 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - LOGS_CAPTURED - Started capturing logs in process (pid: 48219).
-[32m2024-07-04 21:27:13 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - stock_data - STEP_START - Started execution of step "stock_data".
-[*********************100%%**********************]  1 of 1 completed
-
-1 Failed download:
-['AAPL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-01 00:00:00 -> 2020-01-02 00:00:00)')
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - stock_data - No data available for AAPL on 2020-01-01
-[*********************100%%**********************]  1 of 1 completed
-
-1 Failed download:
-['GOOGL']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-01 00:00:00 -> 2020-01-02 00:00:00)')
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - stock_data - No data available for GOOGL on 2020-01-01
-[*********************100%%**********************]  1 of 1 completed
-
-1 Failed download:
-['MSFT']: YFPricesMissingError('$%ticker%: possibly delisted; No price data found  (1d 2020-01-01 00:00:00 -> 2020-01-02 00:00:00)')
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mWARNING[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - stock_data - No data available for MSFT on 2020-01-01
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - stock_data - STEP_OUTPUT - Yielded output "result" of type "Dict[String,DataFrame]". (Type check passed).
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - stock_data - Writing file at: /home/migojipsa/github/py_momentum/tmpazldcnkr/storage/stock_data/2020-01-01 using PickledObjectFilesystemIOManager...
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - stock_data - ASSET_MATERIALIZATION - Materialized value stock_data.
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - stock_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2024-07-04 21:27:14 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 2933e052-4cf3-4153-9d6e-8a5239250b8d - 48219 - stock_data - STEP_SUCCESS - Finished execution of step "stock_data" in 663ms.
