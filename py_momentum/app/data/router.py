@@ -1,26 +1,36 @@
 from fastapi import APIRouter, Depends, HTTPException
-from typing import List
-from datetime import date
 from sqlalchemy.orm import Session
-from .models import StockDataWithIndicators
 from .service import DataService
+from .models import StockData, BatchStockRequest, BatchStockResponse
 from ..database import get_db
-import logging
+from datetime import date
 
 router = APIRouter()
-logger = logging.getLogger(__name__)
 
 
-@router.get("/data/{symbol}", response_model=List[StockDataWithIndicators])
+def get_data_service(db: Session = Depends(get_db)):
+    return DataService(db)
+
+
+@router.get("/stock/{symbol}", response_model=StockData)
 async def get_stock_data(
     symbol: str,
     start_date: date,
     end_date: date,
-    db: Session = Depends(get_db),
-    data_service: DataService = Depends(),
+    interval: str,
+    data_service: DataService = Depends(get_data_service),
 ):
     try:
-        return await data_service.get_stock_data(symbol, start_date, end_date, db)
+        return await data_service.get_stock_data(symbol, start_date, end_date, interval)
     except Exception as e:
-        logger.error(f"Error processing request: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/batch", response_model=BatchStockResponse)
+async def get_batch_stock_data(
+    request: BatchStockRequest, data_service: DataService = Depends(get_data_service)
+):
+    try:
+        return await data_service.get_batch_stock_data(request)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

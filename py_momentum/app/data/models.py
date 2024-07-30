@@ -1,29 +1,11 @@
-from sqlalchemy import Column, Date, Integer, String, Float
 from pydantic import BaseModel
 from datetime import date
-from typing import Optional
-from ..database import Base
+from typing import List, Optional
+from sqlalchemy import BigInteger, Column, String, Date, Float
+from py_momentum.app.database import Base
 
 
-# SQLAlchemy models
-class StockDataDB(Base):
-    __tablename__ = "stock_data"
-
-    id = Column(Integer, primary_key=True, index=True)
-    symbol = Column(String, index=True)
-    date = Column(Date, index=True)
-    open = Column(Float)
-    high = Column(Float)
-    low = Column(Float)
-    close = Column(Float)
-    volume = Column(Integer)
-    sma_50 = Column(Float)
-    sma_200 = Column(Float)
-    rsi_14 = Column(Float)
-
-
-# Pydantic models (for API)
-class StockData(BaseModel):
+class StockDataPoint(BaseModel):
     date: date
     open: float
     high: float
@@ -32,14 +14,33 @@ class StockData(BaseModel):
     volume: int
 
 
-class TechnicalIndicators(BaseModel):
-    sma_50: Optional[float]
-    sma_200: Optional[float]
-    rsi_14: Optional[float]
+class StockData(BaseModel):
+    symbol: str
+    data_points: List[StockDataPoint]
 
 
-class StockDataWithIndicators(StockData):
-    indicators: TechnicalIndicators
+class BatchStockRequest(BaseModel):
+    symbols: List[str]
+    start_date: date
+    end_date: date
+    interval: str
 
-    class Config:
-        from_attributes = True
+
+class BatchStockResponse(BaseModel):
+    stock_data: dict[str, StockData]
+    errors: Optional[dict[str, str]] = None
+
+
+# SQLAlchemy model for database
+class StockDataDB(Base):
+    __tablename__ = "stock_data"
+    __description__ = "Stock data for a symbol"
+
+    id = Column(BigInteger, primary_key=True, index=True)
+    symbol = Column(String, index=True)
+    date = Column(Date, index=True)
+    open = Column(Float)
+    high = Column(Float)
+    low = Column(Float)
+    close = Column(Float)
+    volume = Column(BigInteger)

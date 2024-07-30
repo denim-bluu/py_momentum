@@ -1,13 +1,17 @@
 from abc import ABC, abstractmethod
 from typing import List
 from datetime import date
-from ..models import StockDataWithIndicators
-from sqlalchemy.orm import Session
-
+from ..models import StockData, BatchStockResponse
 
 class BaseDataRepository(ABC):
     @abstractmethod
-    async def get_stock_data(
-        self, symbol: str, start_date: date, end_date: date, db: Session
-    ) -> List[StockDataWithIndicators]:
+    async def get_stock_data(self, symbol: str, start_date: date, end_date: date, interval: str) -> StockData:
+        pass
+
+    @abstractmethod
+    async def get_batch_stock_data(self, symbols: List[str], start_date: date, end_date: date, interval: str) -> BatchStockResponse:
+        pass
+
+    @abstractmethod
+    async def save_stock_data(self, stock_data: StockData) -> None:
         pass

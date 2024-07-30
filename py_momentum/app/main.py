@@ -1,29 +1,23 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from fastapi.concurrency import asynccontextmanager
-from .data.router import router as data_router
-from .database import engine, Base
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from py_momentum.app.data.router import router as data_router
+from py_momentum.app.strategy.router import router as strategy_router
+from py_momentum.app.database import engine, Base
+from loguru import logger
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Startup logic
     Base.metadata.create_all(bind=engine)
     logger.info("Application started")
     yield
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
-app.include_router(data_router, prefix="/api/v1")
-
-
-@app.on_event("startup")
-async def startup():
-    Base.metadata.create_all(bind=engine)
-    logger.info("Application started")
+app.include_router(data_router, prefix="/api/v1/data", tags=["data"])
+app.include_router(strategy_router, prefix="/api/v1/strategy", tags=["strategy"])
 
 
 if __name__ == "__main__":
