@@ -1,9 +1,10 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from py_momentum.app.data.router import router as data_router
-from py_momentum.app.strategy.router import router as strategy_router
-from py_momentum.app.database import engine, Base
 from loguru import logger
+from app.data.router import router as data_router
+from app.database import Base, engine
+from app.strategy.router import router as strategy_router
 
 
 @asynccontextmanager

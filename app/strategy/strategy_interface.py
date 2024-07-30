@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
-from .models import MarketRegime, StockSignal
 from typing import Any, Dict, List
-from ..data.models import StockData
+
+from app.data.models import StockData
+from .models import MarketRegime, StockSignal
 
 
 class Strategy(ABC):

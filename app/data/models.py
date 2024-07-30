@@ -1,8 +1,9 @@
-from pydantic import BaseModel
 from datetime import date
 from typing import List, Optional
-from sqlalchemy import BigInteger, Column, String, Date, Float
-from py_momentum.app.database import Base
+
+from app.database import Base
+from pydantic import BaseModel
+from sqlalchemy import BigInteger, Column, Date, Float, String
 
 
 class StockDataPoint(BaseModel):

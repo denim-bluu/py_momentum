@@ -1,9 +1,11 @@
+from datetime import date
+from typing import List
+
 import pandas as pd
 import yfinance as yf
-from typing import List
-from datetime import date
+
+from app.data.models import BatchStockResponse, StockData, StockDataPoint
 from .base import BaseDataRepository
-from ..models import StockData, StockDataPoint, BatchStockResponse
 
 
 class YahooFinanceRepository(BaseDataRepository):

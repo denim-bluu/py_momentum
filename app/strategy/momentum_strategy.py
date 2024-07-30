@@ -1,14 +1,16 @@
-from typing import Any, Dict, List, Optional
+from typing import Any
 
-from loguru import logger
 import numpy as np
+from loguru import logger
+
+from app.data.models import StockData
+
+from .models import MarketRegime, OrderSignal, StockSignal, StrategyParameters
 from .strategy_interface import Strategy
-from .models import MarketRegime, StockSignal, StrategyParameters, OrderSignal
-from ..data.models import StockData
 from .utils import (
+    calculate_atr,
     calculate_momentum_score,
     calculate_moving_average,
-    calculate_atr,
     has_recent_large_gap,
 )
 
@@ -18,8 +20,10 @@ class MomentumStrategy(Strategy):
         self.params = StrategyParameters()
 
     def generate_signals(
-        self, stock_data: Dict[str, StockData], index_data: StockData
-    ) -> List[StockSignal]:
+        self,
+        stock_data: dict[str, StockData],
+        index_data: StockData,
+    ) -> list[StockSignal]:
         regime = self.detect_market_regime(index_data)
         logger.info(f"⛳️ Market regime is {regime.name}")
         if regime == MarketRegime.BEAR:
@@ -35,8 +39,10 @@ class MomentumStrategy(Strategy):
         return self._sort_and_filter_signals(signals)
 
     def _generate_signal(
-        self, symbol: str, stock_data: StockData
-    ) -> Optional[StockSignal]:
+        self,
+        symbol: str,
+        stock_data: StockData,
+    ) -> StockSignal | None:
         logger.info(f"🔍 Checking {symbol} for signals")
         if self._is_stock_disqualified(stock_data):
             logger.info(f"❌ {symbol} disqualified")
@@ -50,7 +56,7 @@ class MomentumStrategy(Strategy):
         )
         risk_unit = self.calculate_risk(stock_data)
         logger.info(
-            f"🔖 {symbol} momentum score: {momentum_score}, risk unit: {risk_unit}"
+            f"🔖 {symbol} momentum score: {momentum_score}, risk unit: {risk_unit}",
         )
 
         return StockSignal(
@@ -63,7 +69,9 @@ class MomentumStrategy(Strategy):
 
     def _is_stock_disqualified(self, stock_data: StockData) -> bool:
         if has_recent_large_gap(
-            data_points=stock_data.data_points, lookback_period=90, threshold=0.15
+            data_points=stock_data.data_points,
+            lookback_period=90,
+            threshold=0.15,
         ):
             logger.info("❌ Recent large gap detected")
             return True
@@ -84,7 +92,7 @@ class MomentumStrategy(Strategy):
 
         return False
 
-    def _sort_and_filter_signals(self, signals: List[StockSignal]) -> List[StockSignal]:
+    def _sort_and_filter_signals(self, signals: list[StockSignal]) -> list[StockSignal]:
         logger.info("🔍 Sorting and filtering signals")
         sorted_signals = sorted(signals, key=lambda x: x.momentum_score, reverse=True)
         logger.info(f"🧹 Sorted signals: {sorted_signals}")
@@ -104,7 +112,8 @@ class MomentumStrategy(Strategy):
 
         current_price = market_index_data.data_points[-1].close
         ma200 = calculate_moving_average(
-            market_index_data.data_points, self.params.market_regime_period
+            market_index_data.data_points,
+            self.params.market_regime_period,
         )
 
         if current_price > ma200:
@@ -112,8 +121,8 @@ class MomentumStrategy(Strategy):
         else:
             return MarketRegime.BEAR
 
-    def get_parameters(self) -> Dict[str, Any]:
+    def get_parameters(self) -> dict[str, Any]:
         return self.params.model_dump()
 
-    def set_parameters(self, params: Dict[str, Any]) -> None:
+    def set_parameters(self, params: dict[str, Any]) -> None:
         self.params = StrategyParameters(**params)

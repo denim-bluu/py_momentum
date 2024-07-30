@@ -1,13 +1,14 @@
+import json
 from datetime import date
 
 from loguru import logger
-from .models import StockData, BatchStockRequest, BatchStockResponse
-from .repository.base import BaseDataRepository
-from .repository.yahoo_finance import YahooFinanceRepository
-from .repository.database import DatabaseRepository
-from ..cache import get_cache, set_cache
 from sqlalchemy.orm import Session
-import json
+
+from app.cache import get_cache, set_cache
+from .models import BatchStockRequest, BatchStockResponse, StockData
+from .repository.base import BaseDataRepository
+from .repository.database import DatabaseRepository
+from .repository.yahoo_finance import YahooFinanceRepository
 
 
 class DataService:
@@ -31,7 +32,7 @@ class DataService:
         db_data = await self.db_repo.get_stock_data(
             symbol, start_date, end_date, interval
         )
-        
+
         if not db_data.data_points:
             logger.info(f"❌ Data not found in database for {symbol}")
             logger.info(f"🔎 Fetching data from Yahoo Finance for {symbol}")

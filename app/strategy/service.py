@@ -1,10 +1,11 @@
 from typing import Any, Dict
 
-from py_momentum.app.data.models import BatchStockRequest
-from .strategy_interface import Strategy
-from .momentum_strategy import MomentumStrategy
-from .models import SignalRequest, SignalResponse
+from app.data.models import BatchStockRequest
+
 from ..data.service import DataService
+from .models import SignalRequest, SignalResponse
+from .momentum_strategy import MomentumStrategy
+from .strategy_interface import Strategy
 
 
 class StrategyService:

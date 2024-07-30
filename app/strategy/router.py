@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException
-
-from py_momentum.app.data.router import get_data_service
-from sqlalchemy.orm import Session
-from .service import StrategyService
-from .models import SignalRequest, SignalResponse, StrategyParameters
-from py_momentum.app.database import get_db
 from typing import Any, Dict
+
+from fastapi import APIRouter, Depends, HTTPException
+from app.data.router import get_data_service
+from app.database import get_db
+from sqlalchemy.orm import Session
+
+from .models import SignalRequest, SignalResponse, StrategyParameters
+from .service import StrategyService
 
 router = APIRouter()
 

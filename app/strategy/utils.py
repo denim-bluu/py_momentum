@@ -1,9 +1,9 @@
 from typing import List
+
 import numpy as np
 import pandas as pd
+from app.data.models import StockData, StockDataPoint
 from sklearn.linear_model import LinearRegression
-
-from py_momentum.app.data.models import StockData, StockDataPoint
 
 
 def calculate_momentum_score(prices: np.ndarray, lookback: int = 90) -> float:

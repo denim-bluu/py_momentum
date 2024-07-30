@@ -2,9 +2,7 @@
 name = "py_momentum"
 version = "0.1.0"
 description = "Default template for PDM package"
-authors = [
-    {name = "Joon Kang", email = "denim.bluu@gmail.com"},
-]
+authors = [{ name = "Joon Kang", email = "denim.bluu@gmail.com" }]
 dependencies = [
     "yfinance>=0.2.41",
     "scipy>=1.14.0",
@@ -25,19 +23,22 @@ dependencies = [
 ]
 requires-python = "==3.10.*"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 
 [tool.pdm]
 distribution = false
 
 [tool.pdm.dev-dependencies]
-test = [
-    "pytest>=8.3.2",
-]
-lint = [
-    "ruff>=0.5.5",
-]
-dev = [
-    "ptpython>=3.0.29",
-]
+test = ["pytest>=8.3.2"]
+lint = ["ruff>=0.5.5"]
+dev = ["ptpython>=3.0.29"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+line-ending = "auto"

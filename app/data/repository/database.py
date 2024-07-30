@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from datetime import date
 from .base import BaseDataRepository
-from ..models import StockData, StockDataPoint, BatchStockResponse, StockDataDB
+from app.data.models import StockData, StockDataPoint, BatchStockResponse, StockDataDB
 
 
 class DatabaseRepository(BaseDataRepository):
