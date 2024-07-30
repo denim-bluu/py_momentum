@@ -1,3 +1,5 @@
+# Python Algorithmic Trading System (WIP)
+
 ## Overview of the System
 
 This project is a Python-based algorithmic trading system designed to facilitate the development, backtesting, and execution of trading strategies. The system is modular and extensible, allowing for easy integration of new strategies and data sources.
@@ -107,4 +109,3 @@ For a complete list of dependencies, refer to the [pyproject.toml](pyproject.tom
 ## Authors
 
 - Joon Kang - [denim.bluu@gmail.com](mailto:denim.bluu@gmail.com)
-``
