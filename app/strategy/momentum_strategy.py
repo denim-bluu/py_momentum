@@ -5,9 +5,14 @@ from loguru import logger
 
 from app.data.models import StockData
 
-from .models import MarketRegime, OrderSignal, StockSignal, StrategyParameters
-from .strategy_interface import Strategy
-from .utils import (
+from app.strategy.models import (
+    MarketRegime,
+    OrderSignal,
+    StockSignal,
+    StrategyParameters,
+)
+from app.strategy.strategy_interface import Strategy
+from app.strategy.utils import (
     calculate_atr,
     calculate_momentum_score,
     calculate_moving_average,
@@ -16,8 +21,11 @@ from .utils import (
 
 
 class MomentumStrategy(Strategy):
-    def __init__(self):
-        self.params = StrategyParameters()
+    def __init__(self, params: StrategyParameters):
+        self.params = params
+
+    def __repr__(self):
+        return f"MomentumStrategy({self.params})"
 
     def generate_signals(
         self,
@@ -56,7 +64,11 @@ class MomentumStrategy(Strategy):
         )
         risk_unit = self.calculate_risk(stock_data)
         logger.info(
-            f"🔖 {symbol} momentum score: {momentum_score}, risk unit: {risk_unit}",
+            "🔖 {0} momentum score: {1:.2f}, risk unit: {2:.2f}".format(
+                symbol,
+                momentum_score,
+                risk_unit,
+            ),
         )
 
         return StockSignal(
@@ -77,7 +89,9 @@ class MomentumStrategy(Strategy):
             return True
 
         last_price = stock_data.data_points[-1].close
-        moving_average = calculate_moving_average(stock_data.data_points, 100)
+        moving_average = calculate_moving_average(
+            tuple([p.close for p in stock_data.data_points]), 100
+        )
         if last_price < moving_average:
             logger.info("❌ Price below 100-day moving average")
             return True
@@ -95,15 +109,16 @@ class MomentumStrategy(Strategy):
     def _sort_and_filter_signals(self, signals: list[StockSignal]) -> list[StockSignal]:
         logger.info("🔍 Sorting and filtering signals")
         sorted_signals = sorted(signals, key=lambda x: x.momentum_score, reverse=True)
-        logger.info(f"🧹 Sorted signals: {sorted_signals}")
+        logger.info(f"🧹 Sorted signals: {[i.symbol for i in sorted_signals]}")
         self.params.top_percentage = 1.0
         top_count = int(len(sorted_signals) * self.params.top_percentage)
-        top = sorted_signals[:top_count]
-        logger.info(f"👑 Top signals: {top}")
-        return top
+        logger.info(f"👑 Top {top_count} signals selected")
+        return sorted_signals[:top_count]
 
     def calculate_risk(self, stock_data: StockData) -> float:
         atr = calculate_atr(stock_data, 20)
+        if atr is None:
+            return 0.0
         return atr * self.params.risk_factor
 
     def detect_market_regime(self, market_index_data: StockData) -> MarketRegime:
@@ -112,7 +127,7 @@ class MomentumStrategy(Strategy):
 
         current_price = market_index_data.data_points[-1].close
         ma200 = calculate_moving_average(
-            market_index_data.data_points,
+            tuple([p.close for p in market_index_data.data_points]),
             self.params.market_regime_period,
         )
 
@@ -122,7 +137,10 @@ class MomentumStrategy(Strategy):
             return MarketRegime.BEAR
 
     def get_parameters(self) -> dict[str, Any]:
+        logger.info(f"📩 Getting strategy parameters: {self.params}")
         return self.params.model_dump()
 
     def set_parameters(self, params: dict[str, Any]) -> None:
+        logger.info(f"Original params: {self.params}")
+        logger.info(f"🔧 Setting strategy parameters: {params}")
         self.params = StrategyParameters(**params)

@@ -121,13 +121,13 @@ python main.py
 1. Get Strategy Parameters
 
    ```sh
-   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters/momentum 
+   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters 
    ```
 
 2. Configure Strategy Parameters (Not fully implemented)
 
    ```sh
-   curl -X POST http://localhost:8000/api/v1/strategy/configure_strategy/momentum \
+   curl -X POST http://localhost:8000/api/v1/strategy/configure_strategy \
    -H "Content-Type: application/json" \
    -d '{
    "lookback_period": 120,
