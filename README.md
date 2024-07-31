@@ -1,6 +1,6 @@
 # Python Algorithmic Trading System (WIP)
 
-[![codecov](https://codecov.io/gh/username/repo/branch/main/graph/badge.svg)](https://codecov.io/gh/username/repo)
+[![codecov](https://codecov.io/gh/denim-bluu/py_momentum/graph/badge.svg?token=QGPFTM6JM1)](https://codecov.io/gh/denim-bluu/py_momentum)
 
 ## Overview of the System
 
