@@ -1,5 +1,7 @@
 # Python Algorithmic Trading System (WIP)
 
+[![codecov](https://codecov.io/gh/username/repo/branch/main/graph/badge.svg)](https://codecov.io/gh/username/repo)
+
 ## Overview of the System
 
 This project is a Python-based algorithmic trading system designed to facilitate the development, backtesting, and execution of trading strategies. The system is modular and extensible, allowing for easy integration of new strategies and data sources.
@@ -121,7 +123,7 @@ python main.py
 1. Get Strategy Parameters
 
    ```sh
-   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters 
+   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters
    ```
 
 2. Configure Strategy Parameters (Not fully implemented)
@@ -149,6 +151,32 @@ python main.py
    }'
 
    ```
+
+## Development Setup
+
+This project uses [pre-commit](https://pre-commit.com/) to run code quality checks before each commit.
+
+To set up pre-commit:
+
+1. Install pre-commit:
+
+   ```sh
+   pdm add pre-commit --dev
+   ```
+
+2. Install the git hook scripts:
+
+   ```sh
+   pre-commit install
+   ```
+
+Now, pre-commit will run automatically on `git commit`.
+
+To run all pre-commit hooks manually:
+
+```sh
+pre-commit run --all-files
+```
 
 ## Testing
 
