@@ -1,10 +1,9 @@
 from datetime import timedelta
-from typing import Any, Dict
+from typing import Any
 
 from loguru import logger
 
 from app.data.models import BatchStockRequest
-
 from app.data.service import DataService
 from app.strategy.models import SignalRequest, SignalResponse, StrategyParameters
 from app.strategy.momentum_strategy import MomentumStrategy
@@ -44,8 +43,8 @@ class StrategyService:
 
         return SignalResponse(signals=signals)
 
-    def configure_strategy(self, params: Dict[str, Any]) -> None:
+    def configure_strategy(self, params: dict[str, Any]) -> None:
         self.strategy.set_parameters(params)
 
-    def get_strategy_parameters(self) -> Dict[str, Any]:
+    def get_strategy_parameters(self) -> dict[str, Any]:
         return self.strategy.get_parameters()

@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from datetime import date
-from typing import List
 
 from app.data.models import BatchStockResponse, StockData
 
@@ -14,7 +13,7 @@ class BaseDataRepository(ABC):
 
     @abstractmethod
     async def get_batch_stock_data(
-        self, symbols: List[str], start_date: date, end_date: date, interval: str
+        self, symbols: list[str], start_date: date, end_date: date, interval: str
     ) -> BatchStockResponse:
         pass
 

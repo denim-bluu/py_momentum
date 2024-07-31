@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from loguru import logger
+
 from app.data.router import router as data_router
 from app.database import Base, engine
 from app.strategy.router import router as strategy_router

@@ -1,8 +1,10 @@
-from sqlalchemy.orm import Session
-from typing import List
 from datetime import date
+
+from sqlalchemy.orm import Session
+
+from app.data.models import BatchStockResponse, StockData, StockDataDB, StockDataPoint
+
 from .base import BaseDataRepository
-from app.data.models import StockData, StockDataPoint, BatchStockResponse, StockDataDB
 
 
 class DatabaseRepository(BaseDataRepository):
@@ -36,7 +38,7 @@ class DatabaseRepository(BaseDataRepository):
         return StockData(symbol=symbol, data_points=data_points)
 
     async def get_batch_stock_data(
-        self, symbols: List[str], start_date: date, end_date: date, interval: str
+        self, symbols: list[str], start_date: date, end_date: date, interval: str
     ) -> BatchStockResponse:
         stock_data = {}
         errors = {}

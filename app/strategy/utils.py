@@ -1,8 +1,9 @@
-from typing import List, Optional
-import numpy as np
-from app.data.models import StockData, StockDataPoint
-from sklearn.linear_model import LinearRegression
 from functools import lru_cache
+
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+from app.data.models import StockData, StockDataPoint
 
 
 def calculate_momentum_score(prices: np.ndarray, lookback: int = 90) -> float:
@@ -32,7 +33,7 @@ def calculate_moving_average(prices: tuple[float, ...], period: int) -> float:
     return float(np.mean(prices[-period:]))
 
 
-def calculate_atr(stock_data: StockData, period: int = 14) -> Optional[float]:
+def calculate_atr(stock_data: StockData, period: int = 14) -> float | None:
     if len(stock_data.data_points) < period + 1:
         return None
 
@@ -51,7 +52,7 @@ def calculate_atr(stock_data: StockData, period: int = 14) -> Optional[float]:
 
 
 def has_recent_large_gap(
-    data_points: List[StockDataPoint], lookback_period: int, threshold: float
+    data_points: list[StockDataPoint], lookback_period: int, threshold: float
 ) -> np.bool:
     if len(data_points) < 2:
         return np.bool(False)

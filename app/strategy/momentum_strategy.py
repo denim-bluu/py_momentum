@@ -4,7 +4,6 @@ import numpy as np
 from loguru import logger
 
 from app.data.models import StockData
-
 from app.strategy.models import (
     MarketRegime,
     OrderSignal,
@@ -64,11 +63,7 @@ class MomentumStrategy(Strategy):
         )
         risk_unit = self.calculate_risk(stock_data)
         logger.info(
-            "🔖 {0} momentum score: {1:.2f}, risk unit: {2:.2f}".format(
-                symbol,
-                momentum_score,
-                risk_unit,
-            ),
+            f"🔖 {symbol} momentum score: {momentum_score:.2f}, risk unit: {risk_unit:.2f}",
         )
 
         return StockSignal(

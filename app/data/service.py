@@ -5,6 +5,7 @@ from loguru import logger
 from sqlalchemy.orm import Session
 
 from app.cache import get_cache, set_cache
+
 from .models import BatchStockRequest, BatchStockResponse, StockData
 from .repository.base import BaseDataRepository
 from .repository.database import DatabaseRepository

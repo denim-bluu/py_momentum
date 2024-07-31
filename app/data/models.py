@@ -1,9 +1,9 @@
 from datetime import date
-from typing import List, Optional
 
-from app.database import Base
 from pydantic import BaseModel
 from sqlalchemy import BigInteger, Column, Date, Float, String
+
+from app.database import Base
 
 
 class StockDataPoint(BaseModel):
@@ -17,11 +17,11 @@ class StockDataPoint(BaseModel):
 
 class StockData(BaseModel):
     symbol: str
-    data_points: List[StockDataPoint]
+    data_points: list[StockDataPoint]
 
 
 class BatchStockRequest(BaseModel):
-    symbols: List[str]
+    symbols: list[str]
     start_date: date
     end_date: date
     interval: str
@@ -29,7 +29,7 @@ class BatchStockRequest(BaseModel):
 
 class BatchStockResponse(BaseModel):
     stock_data: dict[str, StockData]
-    errors: Optional[dict[str, str]] = None
+    errors: dict[str, str] | None = None
 
 
 # SQLAlchemy model for database

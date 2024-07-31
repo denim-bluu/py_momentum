@@ -1,10 +1,10 @@
 from datetime import date
-from typing import List
 
 import pandas as pd
 import yfinance as yf
 
 from app.data.models import BatchStockResponse, StockData, StockDataPoint
+
 from .base import BaseDataRepository
 
 
@@ -30,7 +30,7 @@ class YahooFinanceRepository(BaseDataRepository):
         return StockData(symbol=symbol, data_points=data_points)
 
     async def get_batch_stock_data(
-        self, symbols: List[str], start_date: date, end_date: date, interval: str
+        self, symbols: list[str], start_date: date, end_date: date, interval: str
     ) -> BatchStockResponse:
         stock_data = {}
         errors = {}

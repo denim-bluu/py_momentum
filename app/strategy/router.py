@@ -1,8 +1,11 @@
-from typing import Any, Dict
+from typing import Any
+
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+
 from app.data.router import get_data_service
 from app.database import get_db
-from sqlalchemy.orm import Session
+
 from .models import SignalRequest, SignalResponse, StrategyParameters
 from .service import StrategyService
 
@@ -49,7 +52,7 @@ async def configure_strategy(
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.get("/strategy_parameters", response_model=Dict[str, Any])
+@router.get("/strategy_parameters", response_model=dict[str, Any])
 async def get_strategy_parameters(
     strategy_service: StrategyService = Depends(
         strategy_service_provider.get_strategy_service

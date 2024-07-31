@@ -1,6 +1,5 @@
 from datetime import date
 from enum import Enum
-from typing import List
 
 from pydantic import BaseModel
 
@@ -32,11 +31,11 @@ class StrategyParameters(BaseModel):
 
 
 class SignalRequest(BaseModel):
-    symbols: List[str]
+    symbols: list[str]
     date: date
     interval: str
     market_index: str
 
 
 class SignalResponse(BaseModel):
-    signals: List[StockSignal]
+    signals: list[StockSignal]
