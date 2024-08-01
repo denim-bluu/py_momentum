@@ -66,3 +66,4 @@ class DatabaseRepository(BaseDataRepository):
             )
             self.db.add(db_item)
         self.db.commit()
+        self.db.refresh(db_item)

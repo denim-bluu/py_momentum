@@ -31,7 +31,7 @@ This project is a Python-based algorithmic trading system designed to facilitate
    - Provide real-time updates on order status
    - Implement smart order routing and execution algorithms
    - Handle order types relevant to the trading strategies (e.g., market, limit, stop orders)
-5. Portfolio State Service 🚧:
+5. Portfolio State Service ✅:
    - Maintain the actual, settled portfolio state
    - Reconcile desired state (from Portfolio Service) with executed trades (from Trade Execution Service)
    - Track actual positions, cash balance, and transaction history
@@ -121,7 +121,7 @@ python main.py
 1. Get Strategy Parameters
 
    ```sh
-   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters 
+   curl -X GET http://localhost:8000/api/v1/strategy/strategy_parameters
    ```
 
 2. Configure Strategy Parameters (Not fully implemented)
@@ -148,6 +148,32 @@ python main.py
    "market_index": "^GSPC"
    }'
 
+   ```
+
+### Portfolio Service
+
+1. Initiate Portfolio
+
+   ```sh
+   curl --location --request POST 'http://localhost:8000/api/v1/portfolio_state/initiate_portfolio_state' --header 'Content-Type: application/json' --data-raw '{"initial_cash_balance": 1000000}'
+   ```
+
+2. Get the latest portfolio state
+
+   ```sh
+   curl --location 'http://localhost:8000/api/v1/portfolio_state/get_latest_portfolio_state' --header 'Content-Type: application/json'
+   ```
+
+3. Get the portfolio state on a specific date
+
+   ```sh
+   curl --location --request GET 'http://localhost:8000/api/v1/portfolio_state/get_portfolio_state' --header 'Content-Type: application/json' --data '{"date": "2023-08-01"}'
+   ```
+
+4. Update the portfolio state
+
+   ```sh
+   curl --location --request PUT 'http://localhost:8000/api/v1/portfolio_state/update_portfolio_state' --header 'Content-Type: application/json' --data-raw '{"cash_balance": 1000000, "positions": [{"symbol": "AAPL", "quantity": 100, "price": 150.0, "value": 15000.0}], "total_value": 1015000.0}'
    ```
 
 ## Testing
