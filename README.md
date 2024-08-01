@@ -1,5 +1,7 @@
 # Python Algorithmic Trading System (WIP)
 
+[![codecov](https://codecov.io/gh/denim-bluu/py_momentum/graph/badge.svg?token=QGPFTM6JM1)](https://codecov.io/gh/denim-bluu/py_momentum)
+
 ## Overview of the System
 
 This project is a Python-based algorithmic trading system designed to facilitate the development, backtesting, and execution of trading strategies. The system is modular and extensible, allowing for easy integration of new strategies and data sources.
