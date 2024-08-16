@@ -6,7 +6,7 @@ from loguru import logger
 from app.data.models import StockData
 from app.strategy.models import (
     MarketRegime,
-    OrderSignal,
+    SignalType,
     StockSignal,
     StrategyParameters,
 )
@@ -68,7 +68,7 @@ class MomentumStrategy(Strategy):
 
         return StockSignal(
             symbol=symbol,
-            signal=OrderSignal.BUY,
+            signal=SignalType.BUY,
             risk_unit=risk_unit,
             momentum_score=momentum_score,
             current_price=last_price,

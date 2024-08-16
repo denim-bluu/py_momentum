@@ -52,21 +52,32 @@ class DatabaseRepository(BaseDataRepository):
         )
 
     async def update_portfolio_state(
-        self, positions: list[Position], cash_balance: float, total_value: float
+        self,
+        date: date,
+        positions: list[Position],
+        cash_balance: float,
+        total_value: float,
     ) -> None:
-        today = date.today()
-        now = datetime.now()
-
-        db_item = PortfolioStateDB(
-            date=today,
-            timestamp=now,
-            positions=[pos.model_dump() for pos in positions],
-            cash_balance=cash_balance,
-            total_value=total_value,
+        db_item = (
+            self.db.query(PortfolioStateDB)
+            .filter(PortfolioStateDB.date == date)
+            .first()
         )
-        self.db.add(db_item)
+        if db_item:
+            db_item.positions = [pos.model_dump() for pos in positions]  # type: ignore
+            db_item.cash_balance = cash_balance  # type: ignore
+            db_item.total_value = total_value  # type: ignore
+            db_item.timestamp = datetime.now()  # type: ignore
+        else:
+            db_item = PortfolioStateDB(
+                date=date,
+                positions=[pos.model_dump() for pos in positions],
+                cash_balance=cash_balance,
+                total_value=total_value,
+            )
+            self.db.add(db_item)
         self.db.commit()
-        logger.info(f"✅ Portfolio state updated for {today} at {now}")
+        logger.info(f"✅ Portfolio state updated for {date}")
 
     async def initiate_portfolio_state(
         self, initial_cash_balance: float

@@ -8,9 +8,9 @@ from app.database import Base
 
 class Position(BaseModel):
     symbol: str
-    quantity: float = Field(..., gt=0)
+    quantity: float = Field(...)
     price: float = Field(..., gt=0)
-    value: float = Field(..., gt=0)
+    value: float = Field(...)
 
 
 class GetPortfolioStateRequest(BaseModel):
@@ -26,6 +26,7 @@ class PortfolioState(BaseModel):
 
 
 class UpdatePortfolioStateRequest(BaseModel):
+    date: date
     positions: list[Position]
     cash_balance: float = Field(..., ge=0)
     total_value: float = Field(..., ge=0)

@@ -10,7 +10,7 @@ class MarketRegime(Enum):
     NEUTRAL = "neutral"
 
 
-class OrderSignal(str, Enum):
+class SignalType(str, Enum):
     BUY = "BUY"
     SELL = "SELL"
 

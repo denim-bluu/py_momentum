@@ -5,6 +5,7 @@ from loguru import logger
 
 from app.data.router import router as data_router
 from app.database import Base, engine
+from app.portfolio.router import router as portfolio_router
 from app.portfolio_state.router import router as portfolio_state_router
 from app.strategy.router import router as strategy_router
 
@@ -24,6 +25,7 @@ app.include_router(strategy_router, prefix="/api/v1/strategy", tags=["strategy"]
 app.include_router(
     portfolio_state_router, prefix="/api/v1/portfolio_state", tags=["portfolio_state"]
 )
+app.include_router(portfolio_router, prefix="/api/v1/portfolio", tags=["portfolio"])
 
 
 if __name__ == "__main__":
