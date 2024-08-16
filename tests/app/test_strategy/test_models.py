@@ -4,9 +4,9 @@ import pytest
 
 from app.strategy.models import (
     MarketRegime,
-    OrderSignal,
     SignalRequest,
     SignalResponse,
+    SignalType,
     StockSignal,
     StrategyParameters,
 )
@@ -19,8 +19,8 @@ def test_market_regime_enum():
 
 
 def test_order_signal_enum():
-    assert OrderSignal.BUY.value == "BUY"
-    assert OrderSignal.SELL.value == "SELL"
+    assert SignalType.BUY.value == "BUY"
+    assert SignalType.SELL.value == "SELL"
 
 
 def test_stock_signal():

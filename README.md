@@ -152,7 +152,7 @@ python main.py
 
    ```
 
-### Portfolio Service
+### Portfolio State Service
 
 1. Initiate Portfolio
 
@@ -163,7 +163,7 @@ python main.py
 2. Get the latest portfolio state
 
    ```sh
-   curl --location 'http://localhost:8000/api/v1/portfolio_state/get_latest_portfolio_state' --header 'Content-Type: application/json'
+   curl --location --request GET 'http://localhost:8000/api/v1/portfolio_state/get_latest_portfolio_state' --header 'Content-Type: application/json'
    ```
 
 3. Get the portfolio state on a specific date
@@ -176,6 +176,27 @@ python main.py
 
    ```sh
    curl --location --request PUT 'http://localhost:8000/api/v1/portfolio_state/update_portfolio_state' --header 'Content-Type: application/json' --data-raw '{"cash_balance": 1000000, "positions": [{"symbol": "AAPL", "quantity": 100, "price": 150.0, "value": 15000.0}], "total_value": 1015000.0}'
+   ```
+
+### Portfolio Service
+
+1. Rebalance Portfolio
+
+   ```sh
+   curl -X POST http://localhost:8000/api/v1/portfolio/rebalance --header "Content-Type: application/json" \
+   -d '{
+      "date": "2023-06-01",
+      "symbols": ["AAPL", "GOOGL", "MSFT"],
+      "interval": "1d",
+      "market_index": "^GSPC"
+   }'
+
+   ```
+
+2. Portfolio Summary
+
+   ```sh
+   curl -X GET http://localhost:8000/api/v1/portfolio/summary/2023-06-01
    ```
 
 ## Testing

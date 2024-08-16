@@ -45,7 +45,7 @@ class PortfolioStateService:
         logger.info("🔎 Updating portfolio state")
         try:
             await self.db_repo.update_portfolio_state(
-                req.positions, req.cash_balance, req.total_value
+                req.date, req.positions, req.cash_balance, req.total_value
             )
         except Exception as e:
             logger.error(f"Error updating portfolio state: {str(e)}")

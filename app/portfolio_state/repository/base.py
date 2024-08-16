@@ -15,7 +15,11 @@ class BaseDataRepository(ABC):
 
     @abstractmethod
     async def update_portfolio_state(
-        self, positions: list[Position], cash_balance: float, total_value: float
+        self,
+        date: date,
+        positions: list[Position],
+        cash_balance: float,
+        total_value: float,
     ) -> None:
         pass
 
