@@ -18,7 +18,7 @@ This project is a Python-based algorithmic trading system designed to facilitate
    - Generate trading signals based on market data and configured strategies
    - Provide risk calculations for potential trades
    - Allow dynamic configuration of strategy parameters
-3. Portfolio Service 🚧:
+3. Portfolio Service ✅:
    - Receive signals from the Strategy Service
    - Determine desired portfolio state based on signals and current market conditions
    - Implement rebalancing logic and scheduling
