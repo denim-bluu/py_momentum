@@ -8,6 +8,7 @@ from app.database import Base, engine
 from app.portfolio.router import router as portfolio_router
 from app.portfolio_state.router import router as portfolio_state_router
 from app.strategy.router import router as strategy_router
+from app.trade_execution.router import router as trade_execution_router
 
 
 @asynccontextmanager
@@ -26,6 +27,9 @@ app.include_router(
     portfolio_state_router, prefix="/api/v1/portfolio_state", tags=["portfolio_state"]
 )
 app.include_router(portfolio_router, prefix="/api/v1/portfolio", tags=["portfolio"])
+app.include_router(
+    trade_execution_router, prefix="/api/v1/trade_execution", tags=["trade_execution"]
+)
 
 
 if __name__ == "__main__":

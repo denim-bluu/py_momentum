@@ -4,9 +4,11 @@ from fastapi import APIRouter, Depends
 from loguru import logger
 from sqlalchemy.orm import Session
 
+from app.data.router import get_data_service
 from app.database import get_db
 from app.portfolio_state.service import PortfolioStateService
 from app.strategy.router import StrategyServiceProvider
+from app.trade_execution.router import get_trade_execution_service
 
 from .models import (
     PortfolioPerformance,
@@ -22,7 +24,14 @@ router = APIRouter()
 def get_portfolio_service(db: Session = Depends(get_db)):
     strategy_service = StrategyServiceProvider().get_strategy_service(db)
     portfolio_state_service = PortfolioStateService(db)
-    return PortfolioService(strategy_service, portfolio_state_service)
+    data_service = get_data_service(db)
+    trade_execution_service = get_trade_execution_service(db)
+    return PortfolioService(
+        strategy_service=strategy_service,
+        portfolio_state_service=portfolio_state_service,
+        data_service=data_service,
+        trade_execution_service=trade_execution_service,
+    )
 
 
 @router.post("/rebalance", response_model=RebalanceResponse)

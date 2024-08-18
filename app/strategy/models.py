@@ -13,6 +13,7 @@ class MarketRegime(Enum):
 class SignalType(str, Enum):
     BUY = "BUY"
     SELL = "SELL"
+    HOLD = "HOLD"
 
 
 class StockSignal(BaseModel):

@@ -8,17 +8,22 @@ This project is a Python-based algorithmic trading system designed to facilitate
 
 ## Project Structure
 
+The system consists of the following core services:
+
 1. Data Service ✅:
    - Fetch and store historical and real-time market data
    - Provide data to other services via API
    - Calculate and store common technical indicators
    - Manage data caching for improved performance
+
 2. Strategy Service ✅:
    - Implement and manage multiple trading strategies
    - Generate trading signals based on market data and configured strategies
    - Provide risk calculations for potential trades
    - Allow dynamic configuration of strategy parameters
+
 3. Portfolio Service ✅:
+   - Act as the central orchestrator for the trading system
    - Receive signals from the Strategy Service
    - Determine desired portfolio state based on signals and current market conditions
    - Implement rebalancing logic and scheduling
@@ -26,13 +31,15 @@ This project is a Python-based algorithmic trading system designed to facilitate
    - Implement portfolio-level risk management rules
    - Manage cash allocations within the portfolio
    - Provide APIs for querying desired portfolio state and manually triggering rebalances
-4. Trade Execution Service 🚧:
+
+4. Trade Execution Service ✅:
    - Receive and execute trade orders from the Portfolio Service
    - Interact with broker APIs or simulate trades in backtest mode
    - Track status of submitted orders (pending, filled, partially filled, cancelled)
    - Provide real-time updates on order status
    - Implement smart order routing and execution algorithms
-   - Handle order types relevant to the trading strategies (e.g., market, limit, stop orders)
+   - Handle order types relevant to the trading strategies (e.g., market, limit orders)
+
 5. Portfolio State Service ✅:
    - Maintain the actual, settled portfolio state
    - Reconcile desired state (from Portfolio Service) with executed trades (from Trade Execution Service)
@@ -40,32 +47,53 @@ This project is a Python-based algorithmic trading system designed to facilitate
    - Calculate and store portfolio performance metrics
    - Handle corporate actions (e.g., dividends, splits)
    - Provide APIs for querying current portfolio state and historical performance
+
 6. Backtesting Service 🚧:
    - Coordinate with other services to simulate historical trading
+   - Simulate the passage of time and provide historical context
+   - Trigger the Portfolio Service to make decisions based on the simulated timeline
    - Fetch historical data from Data Service
-   - Generate historical signals using Strategy Service
-   - Simulate portfolio management using Portfolio Service
-   - Simulate trade execution using Trade Execution Service in backtest mode
-   - Track simulated portfolio state using Portfolio State Service
-   - Calculate and report backtesting performance metrics
-   - Provide tools for strategy optimization and parameter tunin  g
+   - Collect performance metrics and generate reports
+   - Provide tools for strategy optimization and parameter tuning
+
+## System Architecture
+
+The system follows a modular architecture with clear separation of concerns:
 
 ```mermaid
 graph TD
-    A[Data Service] --> B[Strategy Service]
-    A --> C[Portfolio Service]
-    A --> D[Trade Execution Service]
-    A --> E[Portfolio State Service]
-    A --> F[Backtesting Service]
-    B --> C
+    G[Backtesting Service] -->|Triggers portfolio actions| A
+    G --> E
+
+    A[Portfolio Service] --> B[Strategy Service]
+    A --> C[Trade Execution Service]
+    A --> D[Portfolio State Service]
+    A --> E[Data Service]
+
+    B --> E
     C --> D
-    D --> E
-    C -.-> E
-    F --> A
-    F --> B
-    F --> C
-    F --> D
-    F --> E
+    C --> E
+
+    subgraph "Core Services"
+        A
+        B
+        C
+        D
+    end
+
+    subgraph "Data Layer"
+        E
+    end
+
+    subgraph "Simulation Layer"
+        G
+    end
+
+    F[External Data Sources] --> E
+
+    G -->|Simulates timeline| G
+    G -->|Provides historical data| E
+    A -->|Orchestrates trading decisions| A
 ```
 
 ## Configuration

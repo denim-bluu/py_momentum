@@ -1,9 +1,11 @@
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 
 from fastapi import HTTPException
 from loguru import logger
 
+from app.data.models import BatchStockRequest
+from app.data.service import DataService
 from app.portfolio.models import (
     Order,
     OrderType,
@@ -12,78 +14,137 @@ from app.portfolio.models import (
     RebalanceRequest,
     RebalanceResponse,
 )
-from app.portfolio_state.exceptions import PortfolioStateNotFoundError
 from app.portfolio_state.models import (
     GetPortfolioStateRequest,
     PortfolioState,
     Position,
-    UpdatePortfolioStateRequest,
 )
 from app.portfolio_state.service import PortfolioStateService
 from app.strategy.models import SignalRequest, SignalType, StockSignal
 from app.strategy.service import StrategyService
+from app.trade_execution.models import ExecuteOrdersRequest
+from app.trade_execution.service import TradeExecutionService
 
 
-# TODO: Need to make sure rebalance date matches with the portfolio state update date.
 class PortfolioService:
     def __init__(
         self,
         strategy_service: StrategyService,
         portfolio_state_service: PortfolioStateService,
+        trade_execution_service: TradeExecutionService,
+        data_service: DataService,
     ):
         self.strategy_service = strategy_service
         self.portfolio_state_service = portfolio_state_service
+        self.trade_execution_service = trade_execution_service
+        self.data_service = data_service
 
     async def rebalance(self, request: RebalanceRequest) -> RebalanceResponse:
-        logger.info(f"Starting portfolio rebalance for date: {request.date}")
         try:
-            signal_request = SignalRequest(
-                symbols=request.symbols,
-                date=request.date,
-                interval=request.interval,
-                market_index=request.market_index,
-            )
-            signals = await self.strategy_service.generate_signals(signal_request)
+            logger.info(f"Starting portfolio rebalance for date: {request.date}")
 
-            current_portfolio_state = (
+            # Get current portfolio state
+            current_state = (
                 await self.portfolio_state_service.get_latest_portfolio_state()
             )
-            target_positions = await self.calculate_target_positions(
-                signals.signals, current_portfolio_state
-            )
-            orders = await self.generate_orders(
-                {i.symbol: i for i in current_portfolio_state.positions},
-                target_positions,
+
+            # Get market data
+            market_data = await self.data_service.get_batch_stock_data(
+                BatchStockRequest(
+                    symbols=request.symbols,
+                    start_date=request.date,
+                    end_date=request.date,
+                    interval=request.interval,
+                )
             )
 
-            logger.info(f"☄️ Sending Orders: {orders}")
-            new_portfolio_state = await self.execute_orders(
-                current_portfolio_state, orders
+            # Generate signals
+
+            signals = await self.strategy_service.generate_signals(
+                SignalRequest(
+                    symbols=request.symbols,
+                    date=datetime.combine(request.date, datetime.min.time()),
+                    interval=request.interval,
+                    market_index=request.market_index,
+                )
             )
 
-            logger.info(f"🚀 New Portfolio State: {new_portfolio_state}")
-            updated_portfolio_state_req = UpdatePortfolioStateRequest(
-                date=request.date,
-                positions=new_portfolio_state.positions,
-                cash_balance=new_portfolio_state.cash_balance,
-                total_value=new_portfolio_state.total_value,
+            # Determine required trades
+            trades = self._determine_trades(current_state, signals.signals)
+
+            # Execute trades
+            for trade in trades:
+                await self.trade_execution_service.create_order(
+                    trade.symbol, trade.quantity, OrderType.MARKET
+                )
+
+            executed_orders = (  # noqa: F841
+                await self.trade_execution_service.execute_orders(
+                    ExecuteOrdersRequest(
+                        date=datetime.combine(request.date, datetime.min.time()),
+                        market_data={
+                            symbol: data.data_points[-1].close
+                            for symbol, data in market_data.stock_data.items()
+                        },
+                    )
+                )
             )
-            await self.portfolio_state_service.update_portfolio_state(
-                updated_portfolio_state_req
+
+            # Update portfolio state
+            new_state = (  # noqa: F841
+                await self.portfolio_state_service.get_latest_portfolio_state()
             )
 
             logger.info("Rebalance completed successfully")
-            return RebalanceResponse(success=True, message="Rebalanced successfully")
-        except PortfolioStateNotFoundError as e:
-            logger.error(f"Portfolio state not found: {str(e)}")
             return RebalanceResponse(
-                success=False, message=f"Rebalance failed: {str(e)}"
+                success=True, message="Portfolio rebalanced successfully"
             )
         except Exception as e:
             logger.error(f"Error during rebalance: {str(e)}")
             return RebalanceResponse(
                 success=False, message=f"Rebalance failed: {str(e)}"
             )
+
+    def _determine_trades(
+        self, current_state: PortfolioState, signals: list[StockSignal]
+    ) -> list[Order]:
+        trades = []
+        for signal in signals:
+            if signal.signal == "BUY":
+                current_position = next(
+                    (p for p in current_state.positions if p.symbol == signal.symbol),
+                    None,
+                )
+                current_quantity = current_position.quantity if current_position else 0
+                target_quantity = int(
+                    signal.risk_unit * current_state.total_value / signal.current_price
+                )
+                trade_quantity = target_quantity - current_quantity
+                if trade_quantity != 0:
+                    trades.append(
+                        Order(
+                            symbol=signal.symbol,
+                            quantity=trade_quantity,
+                            order_type=OrderType.MARKET,
+                            price=signal.current_price,
+                        )
+                    )
+        return trades
+
+    async def check_and_rebalance(self, date: datetime):
+        # This method would be called periodically or by the backtesting service
+        rebalance_request = RebalanceRequest(
+            date=date,
+            symbols=[
+                p.symbol
+                for p in (
+                    await self.portfolio_state_service.get_latest_portfolio_state()
+                ).positions
+            ],
+            interval="1d",
+            market_index="^GSPC",  # S&P 500 index
+        )
+        await self.rebalance(rebalance_request)
 
     async def calculate_target_positions(
         self, signals: list[StockSignal], current_portfolio_state: PortfolioState

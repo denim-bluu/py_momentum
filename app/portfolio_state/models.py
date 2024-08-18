@@ -28,8 +28,8 @@ class PortfolioState(BaseModel):
 class UpdatePortfolioStateRequest(BaseModel):
     date: date
     positions: list[Position]
-    cash_balance: float = Field(..., ge=0)
-    total_value: float = Field(..., ge=0)
+    cash_balance: float = Field(...)
+    total_value: float = Field(...)
 
 
 class InitiatePortfolioStateRequest(BaseModel):

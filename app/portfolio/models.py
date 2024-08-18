@@ -3,10 +3,11 @@ from enum import Enum
 
 from pydantic import BaseModel
 
+from app.strategy.models import SignalType
+
 
 class OrderType(str, Enum):
     MARKET = "MARKET"
-    LIMIT = "LIMIT"
 
 
 class Order(BaseModel):
@@ -50,12 +51,6 @@ class PortfolioPerformance(BaseModel):
     annualized_return: float
     sharpe_ratio: float | None = None
     max_drawdown: float
-
-
-class SignalType(str, Enum):
-    BUY = "BUY"
-    SELL = "SELL"
-    HOLD = "HOLD"
 
 
 class StockSignal(BaseModel):
